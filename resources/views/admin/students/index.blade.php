@@ -2,19 +2,19 @@
 
 @section('content')
 <div class="container mx-auto p-6 bg-white shadow rounded">
-    <h2 class="text-2xl font-bold mb-4">Student Information</h2>
+    <h2 class="text-2xl font-bold mb-4">UCats Student Information</h2>
 
-    <!-- Add Student Button -->
-    <a href="{{ route('admin.students.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Add Student</a>
+    <!-- add student button -->
+    <a href="{{ route('admin.students.create') }}" class="bg-gray-500 text-white px-4 py-2 rounded mb-4 inline-block">Add Student</a>
 
-    <!-- Success Message -->
+
     @if(session('success'))
         <div class="bg-green-500 text-white p-2 rounded mb-4">
             {{ session('success') }}
         </div>
     @endif
 
-    <!-- Students Table -->
+    <!-- table -->
     <table class="w-full border-collapse border border-gray-300 mt-4">
         <thead>
             <tr class="bg-gray-800 text-white">

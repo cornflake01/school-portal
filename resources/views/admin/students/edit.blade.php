@@ -4,7 +4,7 @@
     <div class="container mx-auto p-6">
         <h1 class="text-3xl font-bold mb-6">Edit Student</h1>
 
-        <!-- Edit Student Form -->
+        <!-- edit form of uc -->
         <form action="{{ route('admin.students.update', $student->id) }}" method="POST">
             @csrf
             @method('PUT')

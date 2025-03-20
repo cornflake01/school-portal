@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">Add Student</h1>
+        <h1 class="text-3xl font-bold mb-6">Add Student to UCats</h1>
 
-        <!-- Add Student Form -->
+        <!-- form for studentss -->
         <form action="{{ route('admin.students.store') }}" method="POST">
             @csrf
 
@@ -29,7 +29,7 @@
             </div>
 
             <div class="mb-4">
-                <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Add Student</button>
+                <button type="submit" class="w-full p-3 bg-yellow-300 text-black rounded-lg hover:bg-gray-600">Confirm Add Student</button>
             </div>
         </form>
     </div>

@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">Student Information</h1>
+        <h1 class="text-3xl font-bold mb-6">UCats Student Information</h1>
 
-        <!-- Button to Add Student -->
-        <a href="{{ route('admin.students.create') }}" class="inline-block mb-4 p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-            + Add Student
+        <!-- add student -->
+        <a href="{{ route('admin.students.create') }}" class="inline-block mb-4 p-3 bg-gray-300 text-white rounded-lg hover:bg-black-600">
+            + Add Student to UCats
         </a>
 
-        <!-- Student Table -->
+        <!-- students -->
         <table class="min-w-full table-auto border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-100">
@@ -28,7 +28,7 @@
                         <td class="px-4 py-2 border">{{ $student->year_level }}</td>
                         <td class="px-4 py-2 border">{{ $student->section }}</td>
                         <td class="px-4 py-2 border">
-                            <!-- Edit and Delete Buttons -->
+                            <!-- edit and delete -->
                             <a href="{{ route('admin.students.edit', $student->id) }}" class="text-blue-500 hover:underline">Edit</a>
                             |
                             <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" class="inline">

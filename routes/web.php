@@ -2,45 +2,46 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AnnouncementController;
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('students', StudentController::class);
 });
 
-// Admin Dashboard
 Route::get('/admin', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
-// Student Information
-Route::get('/admin/students', function () {
-    return view('admin.students');
-})->name('admin.students.index');
+Route::get('/admin/students', [StudentController::class, 'index'])->name('admin.students.index');
 
-// School Announcements
 Route::get('/admin/announcements', function () {
     return view('admin.announcements');
 })->name('admin.announcements.index');
 
-// School Calendar
+
 Route::get('/admin/calendar', function () {
     return view('admin.calendar');
 })->name('admin.calendar.index');
 
-// Login Page Route
-Route::get('/admin/login', function () {
-    return view('auth.login');
-})->name('admin.login');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('announcements', AnnouncementController::class);
+});
 
-// Logout Route
-Route::post('/logout', function (Request $request) {
-    Auth::logout();
-    return redirect()->route('admin.login');
+Route::get('/logout', function () {
+    return redirect('/');
 })->name('logout');
+
+
+
+
+
+
