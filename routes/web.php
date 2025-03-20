@@ -3,14 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Admin\StudentController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admin/students', StudentController::class);
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::resource('students', StudentController::class);
+});
 
 // Admin Dashboard
 Route::get('/admin', function () {

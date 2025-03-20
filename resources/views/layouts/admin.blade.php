@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
+
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <body class="bg-gray-100 min-h-screen flex">
 
-  <!-- Sidebar -->
-  <aside class="w-64 bg-gray-800 text-white p-5 flex flex-col justify-between min-h-screen">
+  <aside class="w-64 bg-gray-800 text-black p-5 flex flex-col justify-between min-h-screen">
     <div>
       <h1 class="text-3xl font-bold mb-2">University of Cats</h1>
       <h2 class="text-lg font-semibold mb-6">Admin Panel</h2>
@@ -39,16 +40,15 @@
       </nav>
     </div>
 
-    <!-- Logout Button (Fixed to Bottom) -->
     <form method="POST" action="{{ route('logout') }}" class="mt-auto">
       @csrf
-      <button type="submit" class="w-full p-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
+      <button type="submit" class="w-full p-3 bg-red-500 text-black rounded-lg hover:bg-red-600 transition">
         🚪 Logout
       </button>
     </form>
   </aside>
 
-  <!-- Main Content -->
+
   <main class="flex-1 p-6">
     @yield('content')
   </main>

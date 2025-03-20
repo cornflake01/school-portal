@@ -1,33 +1,36 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mx-auto p-6 bg-white shadow rounded">
-    <h2 class="text-2xl font-bold mb-4">Add Student</h2>
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6">Add Student</h1>
 
-    <form method="POST" action="{{ route('admin.students.store') }}">
-        @csrf
+        <!-- Add Student Form -->
+        <form action="{{ route('admin.students.store') }}" method="POST">
+            @csrf
 
-        <div class="mb-4">
-            <label class="block font-bold">Name:</label>
-            <input type="text" name="name" class="w-full border p-2 rounded" required>
-        </div>
+            <div class="mb-4">
+                <label for="name" class="block text-lg">Name</label>
+                <input type="text" id="name" name="name" class="w-full p-2 border rounded-lg" required>
+            </div>
 
-        <div class="mb-4">
-            <label class="block font-bold">Student ID:</label>
-            <input type="text" name="student_id" class="w-full border p-2 rounded" required>
-        </div>
+            <div class="mb-4">
+                <label for="student_id" class="block text-lg">Student ID</label>
+                <input type="text" id="student_id" name="student_id" class="w-full p-2 border rounded-lg" required>
+            </div>
 
-        <div class="mb-4">
-            <label class="block font-bold">Year Level:</label>
-            <input type="text" name="year_level" class="w-full border p-2 rounded" required>
-        </div>
+            <div class="mb-4">
+                <label for="year_level" class="block text-lg">Year Level</label>
+                <input type="text" id="year_level" name="year_level" class="w-full p-2 border rounded-lg" required>
+            </div>
 
-        <div class="mb-4">
-            <label class="block font-bold">Section:</label>
-            <input type="text" name="section" class="w-full border p-2 rounded" required>
-        </div>
+            <div class="mb-4">
+                <label for="section" class="block text-lg">Section</label>
+                <input type="text" id="section" name="section" class="w-full p-2 border rounded-lg" required>
+            </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Student</button>
-    </form>
-</div>
+            <div class="mb-4">
+                <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Add Student</button>
+            </div>
+        </form>
+    </div>
 @endsection
