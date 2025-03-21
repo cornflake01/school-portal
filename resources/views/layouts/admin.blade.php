@@ -12,8 +12,8 @@
   <aside class="w-64 bg-slate-900 text-white p-5 flex flex-col justify-between min-h-screen">
     <div>
       <div class="flex items-center mb-2">
-        <img src="{{ asset('images/logo.png') }}" alt="University Logo" class="h-10 w-10 mr-2">
-        <h1 class="text-3xl font-poppins">University of Cats</h1>
+        <img src="{{ asset('images/logo.png') }}" alt="University Logo" class="h-11 w-11 mr-2">
+        <h1 class="text-3xl font-bold">University of Cats</h1>
     </div>
     <h2 class="text-lg font-poppins mb-6">Admin Panel</h2>
       <nav>
