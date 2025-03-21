@@ -29,7 +29,7 @@
             </div>
 
             <div class="mb-4">
-                <button type="submit" class="w-full p-3 bg-yellow-300 text-black rounded-lg hover:bg-gray-600">Confirm Add Student</button>
+                <button type="submit" class="w-full p-3 bg-sky-900 text-white rounded-lg hover:bg-sky-600">Confirm Add Student</button>
             </div>
         </form>
     </div>

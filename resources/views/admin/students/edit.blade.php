@@ -30,7 +30,7 @@
             </div>
 
             <div class="mb-4">
-                <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Update Student</button>
+                <button type="submit" class="w-full p-3 bg-sky-5900 text-white rounded-lg hover:bg-sky-600">Update Student</button>
             </div>
         </form>
     </div>

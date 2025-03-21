@@ -10,7 +10,7 @@
         </a>
 
         <!-- students -->
-        <table class="min-w-full table-auto border-collapse border border-gray-300">
+        <table class="min-w-full table-auto border-collapse border border-teal-900">
             <thead>
                 <tr class="bg-gray-100">
                     <th class="px-4 py-2 text-left border">Name</th>

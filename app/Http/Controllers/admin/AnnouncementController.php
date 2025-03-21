@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Announcement; // ✅ Import the Announcement model
+use App\Models\Announcement;
 
 class AnnouncementController extends Controller
 {
@@ -13,10 +13,16 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $announcements = Announcement::all(); // ✅ Fetch all announcements
+        $announcements = Announcement::orderBy('date', 'desc')->get();
+    
+        // Debugging - Check if announcements are retrieved
+        if ($announcements->isEmpty()) {
+            return back()->with('error', 'No announcements found.');
+        }
+    
         return view('admin.announcements.index', compact('announcements'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -30,19 +36,24 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'announcement' => 'required|string|max:255',
             'date' => 'required|date',
         ]);
-
-        Announcement::create([
-            'announcement' => $request->announcement,
-            'date' => $request->date,
-        ]);
-
-        return redirect()->route('admin.announcements.index')->with('success', 'Announcement added successfully.');
+    
+        try {
+            $announcement = Announcement::create($validatedData);
+    
+            if (!$announcement) {
+                return back()->with('error', 'Announcement was not saved. Please try again.');
+            }
+    
+            return redirect()->route('admin.announcements.index')->with('success', 'Announcement added successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error saving announcement: ' . $e->getMessage());
+        }
     }
-
+     
     /**
      * Show the form for editing the specified resource.
      */
@@ -54,19 +65,21 @@ class AnnouncementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Announcement $announcement)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'announcement' => 'required|string|max:255',
             'date' => 'required|date',
         ]);
-
-        $announcement->update([
-            'announcement' => $request->announcement,
-            'date' => $request->date,
-        ]);
-
-        return redirect()->route('admin.announcements.index')->with('success', 'Announcement updated successfully.');
+    
+        try {
+            $announcement = Announcement::findOrFail($id);
+            $announcement->update($validatedData);
+    
+            return redirect()->route('admin.announcements.index')->with('success', 'Announcement updated successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error updating announcement: ' . $e->getMessage());
+        }
     }
 
     /**
