@@ -1,18 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">UCats Student Information</h1>
+    <div class="container mx-auto p-6 bg-white shadow-md rounded-lg">
+        <h1 class="text-3xl font-bold mb-6">KOI Student Information</h1>
 
-        <!-- add student -->
-        <a href="{{ route('admin.students.create') }}" class="inline-block mb-4 p-3 bg-gray-300 text-white rounded-lg hover:bg-black-600">
-            + Add Student to UCats
+        <!-- Add Student -->
+        <a href="{{ route('admin.students.create') }}" class="bg-sky-900 text-white hover:bg-orange-700 px-4 py-2 rounded mb-4 inline-block">
+            + Add Student to KOI
         </a>
 
-        <!-- students -->
+        <!-- Students Table -->
         <table class="min-w-full table-auto border-collapse border border-teal-900">
             <thead>
-                <tr class="bg-gray-100">
+                <tr class="bg-gray-200">
                     <th class="px-4 py-2 text-left border">Name</th>
                     <th class="px-4 py-2 text-left border">Student ID</th>
                     <th class="px-4 py-2 text-left border">Year Level</th>
@@ -21,24 +21,28 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($students as $student)
+                @forelse ($students as $student)
                     <tr>
                         <td class="px-4 py-2 border">{{ $student->name }}</td>
                         <td class="px-4 py-2 border">{{ $student->student_id }}</td>
                         <td class="px-4 py-2 border">{{ $student->year_level }}</td>
                         <td class="px-4 py-2 border">{{ $student->section }}</td>
                         <td class="px-4 py-2 border">
-                            <!-- edit and delete -->
-                            <a href="{{ route('admin.students.edit', $student->id) }}" class="text-blue-500 hover:underline">Edit</a>
+                            <!-- Edit and Delete -->
+                            <a href="{{ route('admin.students.edit', $student->id) }}" class="bg-amber-300 text-black px-3 py-1 rounded">Edit</a>
                             |
                             <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                                <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700">Delete</button>
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center py-4 text-gray-500">No students found.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

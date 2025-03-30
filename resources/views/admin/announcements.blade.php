@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-poppins mb-6">UCats School Announcements</h1>
 
         <!-- add announcem -->
-        <a href="{{ route('admin.announcements.create') }}" class="inline-block mb-4 p-3 bg-teal-900 text-white rounded-lg hover:bg-black-600">
+        <a href="{{ route('admin.announcements.create') }}" class="block mb-4 p-3 bg-sky-900 text-white rounded-lg hover:bg-orange-700 text-center w-48 mx-auto">
             + Add Announcement
         </a>
 

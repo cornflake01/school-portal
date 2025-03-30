@@ -68,13 +68,6 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-
-    "repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/innologica/laravel-vite"
-    }
-]
+    "prefer-stable": true
 
 }

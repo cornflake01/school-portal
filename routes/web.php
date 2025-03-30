@@ -1,51 +1,44 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AnnouncementController;
-
-
+use App\Http\Controllers\Admin\EventController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('admin.dashboard');
 });
 
+Route::get('/dashboard', function () {
+    return redirect()->route('admin.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard');
+// Admin routes 
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    
+    // Admin dashboard
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 
-
-Route::get('/admin/students', [StudentController::class, 'index'])->name('admin.students.index');
-
-Route::prefix('admin')->name('admin.')->group(function () {
+    // Students
     Route::resource('students', StudentController::class);
-});
 
-
-Route::get('/admin/announcements', function () {
-    return view('admin.announcements');
-})->name('admin.announcements.index');
-
-Route::prefix('admin')->name('admin.')->group(function () {
+    // Announcements 
     Route::resource('announcements', AnnouncementController::class);
+
+    
+    Route::resource('events', EventController::class); 
+    
+
 });
 
-
-Route::get('/admin/calendar', function () {
-    return view('admin.calendar');
-})->name('admin.calendar.index');
-
-
-
-Route::get('/logout', function () {
+// Logout
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
     return redirect('/');
 })->name('logout');
 
-
-
-
-
-
+require __DIR__.'/auth.php';

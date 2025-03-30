@@ -1,22 +1,22 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mx-auto p-6 bg-white shadow rounded">
-        <h2 class="text-2xl font-bold mb-6">UCats Announcements</h2>
+<div class="flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
+        <h2 class="text-2xl font-bold mb-6 text-center">KOI University Announcements</h2>
 
-
-        <a href="{{ url('admin.announcements.create') }}"
-           class="bg-sky-900 text-white px-4 py-2 rounded mb-4 inline-block">
-            + Create UCats Announcement
+        <a href="{{ route('admin.announcements.create') }}"
+           class="block mb-4 p-3 bg-sky-900 text-white rounded-lg hover:bg-orange-700 text-center w-48 mx-auto">
+            + Create Announcement
         </a>
 
         @if(session('success'))
         <div class="bg-green-600 text-white p-2 rounded mb-4">
             {{ session('success') }}
         </div>
-    @endif
+        @endif
 
-        <table class="min-w-full table-auto border-collapse border border-gray-300">
+        <table class="w-full border-collapse border border-gray-300 shadow-md rounded-lg overflow-hidden">
             <thead>
                 <tr class="bg-teal-800 text-white">
                     <th class="px-4 py-2 text-left border">Announcement</th>
@@ -26,11 +26,10 @@
             </thead>
             <tbody>
                 @forelse($announcements as $announcement)
-                    <tr>
+                    <tr class="bg-white">
                         <td class="px-4 py-2 border">{{ $announcement->announcement ?? 'No Title' }}</td>
                         <td class="px-4 py-2 border">{{ $announcement->date ?? 'No Date' }}</td>
                         <td class="p-2 flex gap-2">
-                            <!-- edit/delete -->
                             <a href="{{ route('admin.announcements.edit', $announcement->id) }}" class="bg-amber-300 text-black px-3 py-1 rounded">Edit</a>
                             <form action="{{ route('admin.announcements.destroy', $announcement->id) }}" method="POST" class="inline">
                                 @csrf
@@ -52,4 +51,5 @@
             </tbody>
         </table>
     </div>
+</div>
 @endsection
