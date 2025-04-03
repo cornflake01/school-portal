@@ -6,7 +6,7 @@
 
         <!-- add announcem -->
         <a href="{{ route('admin.announcements.create') }}" class="block mb-4 p-3 bg-sky-900 text-white rounded-lg hover:bg-orange-700 text-center w-48 mx-auto">
-            + Add Announcement
+            + Add KOI Announcement
         </a>
 
         <!-- this is the table -->
