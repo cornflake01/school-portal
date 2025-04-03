@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->date('date'); // 👈 Make sure this exists
+            $table->date('date'); 
             $table->timestamps();
         });
     }

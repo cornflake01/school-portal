@@ -17,7 +17,7 @@
                 <input type="date" name="date" class="w-full p-2 border rounded-lg" required>
             </div>
 
-            <button type="submit" class="bg-sky-900 text-white  hover:bg-orange-700 px-4 py-2 rounded">Save Announcement</button>
+            <button type="submit" class="bg-sky-900 text-white hover:bg-orange-700 px-4 py-2 rounded">Save Announcement</button>
         </form>
     </div>
 </div>

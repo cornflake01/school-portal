@@ -22,7 +22,7 @@
                 <input type="date" name="date" class="w-full p-2 border rounded-lg" required>
             </div>
 
-            <button type="submit" class="bg-sky-900 text-white px-4 py-2 rounded">Save Event</button>
+            <button type="submit" class="bg-sky-900 text-white px-4  hover:bg-orange-700 py-2 rounded">Save Event</button>
         </form>
     </div>
 </div>

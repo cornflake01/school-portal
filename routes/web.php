@@ -27,7 +27,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     // Announcements 
     Route::resource('announcements', AnnouncementController::class);
 
-    
+    // Events
     Route::resource('events', EventController::class); 
     
 

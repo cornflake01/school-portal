@@ -43,7 +43,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="3" class="px-4 py-2 border text-center text-gray-500">
+                        <td colspan="3" class="px-4 py-2 border text-center text-white">
                             No announcements found.
                         </td>
                     </tr>

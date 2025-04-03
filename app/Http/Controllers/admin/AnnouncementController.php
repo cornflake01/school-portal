@@ -15,7 +15,7 @@ class AnnouncementController extends Controller
     {
         $announcements = Announcement::orderBy('date', 'desc')->get();
     
-        // Debugging - Check if announcements are retrieved
+        // 
         if ($announcements->isEmpty()) {
             return back()->with('error', 'No announcements found.');
         }
@@ -28,7 +28,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('admin.announcements.create'); // ✅ Ensure this view exists
+        return view('admin.announcements.create'); 
     }
 
     /**

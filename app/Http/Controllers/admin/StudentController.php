@@ -45,13 +45,13 @@ class StudentController extends Controller
         return redirect()->route('admin.students.index')->with('success', 'Student added successfully.');
     }
 
-    // Show the form to edit a student
+    // form for editing
     public function edit(Student $student)
     {
         return view('admin.students.edit', compact('student'));
     }
 
-    // Update the student's information
+    // this will update info of student
     public function update(Request $request, Student $student)
     {
         $request->validate([
@@ -71,7 +71,7 @@ class StudentController extends Controller
         return redirect()->route('admin.students.index')->with('success', 'Student updated successfully.');
     }
 
-    // Delete a student
+    // delete student data with confirmation
     public function destroy(Student $student)
     {
         $student->delete();

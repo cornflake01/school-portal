@@ -51,8 +51,7 @@
         </button>
       </form>
     </aside>
-
-    <!-- Main Content -->
+    
     <main class="flex-1 flex items-center justify-center">
       @yield('content')
     </main>
